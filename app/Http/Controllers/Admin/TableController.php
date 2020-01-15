@@ -8,6 +8,7 @@ use App\Sim;
 use App\Database;
 use App\Table;
 use App\User;
+use App\Isitable;
 use Illuminate\Support\Facades\Auth;
 
 class TableController extends Controller
@@ -51,7 +52,9 @@ class TableController extends Controller
      */
     public function show($id)
     {
-        //
+        $nama_table = Table::find($id);
+        $isiData = Isitable::where('id_table',$id)->get();
+        return view('admin.modul-datatable.isi_data-table',compact('isiData','nama_table'));
     }
 
     /**

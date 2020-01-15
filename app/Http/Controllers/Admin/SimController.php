@@ -18,7 +18,14 @@ class SimController extends Controller
      */
     public function index()
     {
-        $sim = Sim::all();
+        $sim = Sim::orderBy('created_at', 'desc')->paginate(5);
+        return view('admin.modul-sim.sim-table',compact('sim'));
+    }
+
+    public function post_index(Request $request)
+    {
+        $input_text =  $request->text_search_sim;
+        $sim = Sim::where('name','like','%'. $input_text . '%')->paginate(5);
         return view('admin.modul-sim.sim-table',compact('sim'));
     }
 
@@ -29,7 +36,7 @@ class SimController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.modul-sim.sim-create');
     }
 
     /**

@@ -25,10 +25,13 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/dashboard/admin/role-store','Admin\RoleController@store')->name('admin.role.store');
 
     Route::resource('/dashboard/admin/sim','Admin\SimController');
+    Route::post('/search_sim','Admin\SimController@post_index')->name('post_index');
 
     Route::resource('/dashboard/admin/database','Admin\DatabaseController');
     
     Route::resource('/dashboard/admin/table','Admin\TableController');
 
+    Route::get('/dashboard/admin/isitable/create/{id}','Admin\IsiController@create')->name('isi.create');
+    Route::put('/dashboard/admin/isitable/store/{id}','Admin\IsiController@store')->name('isi.store');
 });   
 

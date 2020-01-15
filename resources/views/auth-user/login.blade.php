@@ -94,7 +94,7 @@
                     <div class="card fat mt-5">
                         <div class="card-body">
                             <h4 class="card-title">Login</h4>
-                            <form method="post" class="my-login-validation" action="">
+                            <form method="post" class="my-login-validation" action="{{route('login.store')}}">
                             @csrf
                                 <div class="form-group">
                                     <label for="email">E-Mail Address</label>
