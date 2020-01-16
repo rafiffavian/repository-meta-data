@@ -10,7 +10,10 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 style="text-align: center" class="box-title">{{$nama_table->name}}</h3><br>
+        <a href="{{route('database.show',$nama_table->id_database)}}">
+                 <img src="{{asset('img/back.png')}}" style="width: 30px; height: 30px;margin-top: 20px;" alt="">     
+        </a>   <br><br>
+          <h3 style="text-align: center" class="box-title">{{$nama_table->name}}</h3><br><br>
           <a class="btn btn-primary" href="{{route('isi.create',$nama_table->id)}}">Tambah</a>
 
           <div class="box-tools pull-right">

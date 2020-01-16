@@ -26,12 +26,22 @@ Route::middleware(['auth'])->group(function(){
 
     Route::resource('/dashboard/admin/sim','Admin\SimController');
     Route::post('/search_sim','Admin\SimController@post_index')->name('post_index');
+    
+    
 
     Route::resource('/dashboard/admin/database','Admin\DatabaseController');
+    Route::put('/search_database/{id}','Admin\DatabaseController@post_index_db')->name('post_index_db');
+    Route::get('/dashboard/admin/database/store/{id}','Admin\DatabaseController@create_data')->name('db.create.data');
+    Route::put('/dashboard/admin/database/store/{id}','Admin\DatabaseController@store_data')->name('db.store.data');
     
     Route::resource('/dashboard/admin/table','Admin\TableController');
+    Route::put('/search_table/{id}','Admin\TableController@post_index_table')->name('post_index_table');
+    Route::get('/dashboard/admin/table/store/{id}','Admin\TableController@create_data')->name('table.create.data');
+    Route::put('/dashboard/admin/table/store/{id}','Admin\TableController@store_data')->name('table.store.data');
+    Route::get('/dashboard/admin/table/back/{id}','Admin\TableController@back')->name('table.back');
 
     Route::get('/dashboard/admin/isitable/create/{id}','Admin\IsiController@create')->name('isi.create');
     Route::put('/dashboard/admin/isitable/store/{id}','Admin\IsiController@store')->name('isi.store');
+    
 });   
 

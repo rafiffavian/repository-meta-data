@@ -61,7 +61,7 @@ class SimController extends Controller
     public function show($id)
     {
         $nama_database = Sim::find($id);
-        $database = Database::where('id_sim',$id)->get();
+        $database = Database::where('id_sim',$id)->orderBy('created_at', 'desc')->paginate(5);
         return view('admin.modul-database.database-table',compact('database','nama_database'));
 
     }

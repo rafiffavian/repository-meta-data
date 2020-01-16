@@ -23,6 +23,35 @@ class TableController extends Controller
         //
     }
 
+    public function back($id)
+    {
+        return redirect(route('sim.show',$id));
+        
+    }
+
+    public function post_index_table(Request $request, $id)
+    {
+        $nama_database = Database::find($id);
+        $input_text =  $request->text_search_table;
+        $table = Table::where('name','like','%'. $input_text . '%')->where('id_database',$id)->orderBy('name', 'asc')->paginate(5);
+        return view('admin.modul-table.isi_table-table',compact('table','nama_database'));
+    }
+
+    public function create_data($id)
+    {
+        $id_database = $id;
+        return view('admin.modul-table.isi_table-create',compact('id_database'));
+    }
+
+    public function store_data(Request $request, $id)
+    {
+        $data = $request->all();
+        $data['id_user'] = Auth::user()->id; 
+        $data['id_database'] = $id; 
+        $save = Table::create($data);
+        return redirect(route('database.show',$id));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
