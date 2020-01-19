@@ -42,6 +42,14 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/dashboard/admin/isitable/create/{id}','Admin\IsiController@create')->name('isi.create');
     Route::put('/dashboard/admin/isitable/store/{id}','Admin\IsiController@store')->name('isi.store');
+    Route::get('/dashboard/admin/isitable/download/{id}','Admin\IsiController@download')->name('isi.download');
+    Route::get('/dashboard/admin/isitable/download/back/{id}','Admin\IsiController@back')->name('isi.back');
+
+    Route::get('/dashboard/admin/table/download/{id}','Admin\DownloadController@index')->name('download.index');
+    Route::get('/dashboard/admin/table/download/create/{id}','Admin\DownloadController@create')->name('download.create');
+    Route::put('/dashboard/admin/table/download/store/{id}','Admin\DownloadController@store')->name('download.store');
+    Route::get('/dashboard/admin/table/download/download/{id}','Admin\DownloadController@download')->name('download.file');
+    Route::get('/dashboard/admin/table/download/back/{id}','Admin\DownloadController@back')->name('download.back');
     
 });   
 

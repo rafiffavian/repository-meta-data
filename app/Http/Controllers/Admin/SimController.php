@@ -25,7 +25,7 @@ class SimController extends Controller
     public function post_index(Request $request)
     {
         $input_text =  $request->text_search_sim;
-        $sim = Sim::where('name','like','%'. $input_text . '%')->paginate(5);
+        $sim = Sim::where('name','ilike','%'. $input_text . '%')->paginate(5);
         return view('admin.modul-sim.sim-table',compact('sim'));
     }
 

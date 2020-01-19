@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-        <form class="form-horizontal" method="post" action="{{route('table.store.data',$id_database)}}" enctype="multipart/form-data">
+        <form class="form-horizontal" method="post" action="{{route('download.store',$id_table)}}" enctype="multipart/form-data">
         @csrf
         <fieldset>
 
@@ -11,9 +11,15 @@
         <!-- Text input-->
         <input type="hidden" name="_method" value="put">
         <div class="form-group">
-        <label class="col-md-4 control-label" for="textinput">Nama Table</label>  
+        <label class="col-md-4 control-label" for="textinput">Nama file</label>  
             <div class="col-md-4">
                 <input id="textinput" name="name" type="text" placeholder="Name" class="form-control input-md">
+            </div>
+        </div>
+        <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">File</label>  
+            <div class="col-md-4">
+                <input id="textinput" name="file" type="file" placeholder="File" class="form-control input-md">
             </div>
         </div>
        

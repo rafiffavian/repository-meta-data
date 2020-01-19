@@ -36,7 +36,8 @@
                             <li style="margin:20px 0;">
                                 <a href="{{route('table.show',$tables->id)}}">{{$tables->name}}</a><br>
                                 <!--small><a data-toggle="modal" href="#editMk1">Edit</a>&nbsp;<a href=""></a></small-->
-                                <small><a href="/edit-matkul/sis-infor-akun">Edit</a>&nbsp;<a href=""></a></small>
+                                <small><a href="#">Edit</a>&nbsp;<a href=""></a></small>||
+                                <small><a href="{{route('download.index',$tables->id)}}">Upload File</a>&nbsp;<a href=""></a></small>
                             </li>
                         </ul>
                     @endforeach 

@@ -26,7 +26,7 @@ class DatabaseController extends Controller
     {
         $nama_database = Sim::find($id);
         $input_text =  $request->text_search_db;
-        $database = Database::where('name','like','%'. $input_text . '%')->where('id_sim',$id)->orderBy('name', 'asc')->paginate(5);
+        $database = Database::where('name','ilike','%'. $input_text . '%')->where('id_sim',$id)->orderBy('name', 'asc')->paginate(5);
         return view('admin.modul-database.database-table',compact('database','nama_database'));
     }
 

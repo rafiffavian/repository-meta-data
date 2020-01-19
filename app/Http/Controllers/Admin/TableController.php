@@ -33,7 +33,7 @@ class TableController extends Controller
     {
         $nama_database = Database::find($id);
         $input_text =  $request->text_search_table;
-        $table = Table::where('name','like','%'. $input_text . '%')->where('id_database',$id)->orderBy('name', 'asc')->paginate(5);
+        $table = Table::where('name','ilike','%'. $input_text . '%')->where('id_database',$id)->orderBy('name', 'asc')->paginate(5);
         return view('admin.modul-table.isi_table-table',compact('table','nama_database'));
     }
 

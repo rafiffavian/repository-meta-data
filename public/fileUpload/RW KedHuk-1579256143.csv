@@ -1,0 +1,8 @@
+META DATA TABEL RW_KEDUDUKAN_HUKUM,,,,,,
+Name,Null?,Type,Param json API SIMPEG,Keterangan,Sample Data,Relasi
+ID,NOT NULL,VARCHAR2(32),id,ID yang otomatis ter-generate saat data dibuat,A8ACA74B94273912E040640A040269BB,
+PNS_ORANG_ID,,VARCHAR2(32),pnsId,ID dari PNS,A8ACA74B94273912E040640A040269AA,n to 1
+KEDUDUKAN_HUKUM_ID,,VARCHAR2(2),kedudukanHukumId,ID dari Kedudukan Hukum (lihat di s.id/TABREFBKN),02,n to 1
+KEDUDUKAN_HUKUM_LAMA,,VARCHAR2(2),kedudukanHukumLama,ID dari Kedudukan Hukum sebelumnya (lihat di s.id/TABREFBKN),01,
+TMT_KEDUDUKAN_HUKUM,,DATE,tmtKedudukanHukum,Tanggal TMT Kedudukan Hukum,11/01/2010 0:00:00,
+NCSISTIME,,TIMESTAMP(6),,Waktu realtime ter-create nya data,23-JUL-11 12.33.37.000000 AM,

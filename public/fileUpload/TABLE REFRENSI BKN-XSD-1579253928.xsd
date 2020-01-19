@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2020 sp1 (http://www.altova.com) by rafif favian (gunadarma) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+ <xs:element name="ESELON_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="2"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="5"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="ESELON_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="ID"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="JENIS_KURSUS">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="2"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="JENIS_KURSUS_SERTIPIKAT">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="100"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="JenisKursusSertifikat_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="ID"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF JABATAN_FUNGSIONAL">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="100"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="BUP_USIA" nillable="true" minOccurs="0">
+     <xs:simpleType>
+      <xs:restriction base="xs:decimal">
+       <xs:maxLength value="2"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="JabatanFungsional_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="ID"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF JABATAN_FUNGSIONAL_UMUM">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="100"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="JabatanFungsionalUmum_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="ID"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF JENIS_JABATAN_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="1"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="50"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="JenisJabatanId_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="ID"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF INSTANSI_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="100"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element ref="TABREF SATUAN_KERJA_ID" minOccurs="0" maxOccurs="unbounded"/>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="InstansiId_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="ID"/>
+  </xs:key>
+  <xs:keyref name="SatuanKerjaId_ForeignKey_1" refer="InstansiId_PrimaryKey_1">
+   <xs:selector xpath="TABREF SATUAN_KERJA_ID"/>
+   <xs:field xpath="INSTANSI_ID"/>
+  </xs:keyref>
+ </xs:element>
+ <xs:element name="TABREF SATUAN_KERJA_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="100"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="INSTANSI_ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="SatuanKerjaId_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="ID"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="KABUPATEN_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="LOKASI_ID" nillable="true" minOccurs="0">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="40"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="JENIS">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="2"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF JENIS_KEPANITIAAN">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="JENIS_ORGANISASI">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="2"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA" nillable="true" minOccurs="0">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="200"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF AGAMA_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="1"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="15"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF TASPEN_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="3"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="KTUA_ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="30"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF JENIS_ID_DOKUMEN_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="1"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="30"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF JENIS_KAWIN_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="1"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="15"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF JENIS_KP_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="3"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="60"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF PROFESI">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="40"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF LATIHAN_STRUKTURAL_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="1"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA" nillable="true" minOccurs="0">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="40"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF JENIS_KOMPETENSI">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="150"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF JENIS_KURSUS_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA" nillable="true" minOccurs="0">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="60"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF CLTN_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="2"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="40"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF CLTN_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="2"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="5"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF JENIS_HUKUMAN_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="2"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="60"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF JENIS_PEGAWAI_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="2"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="50"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF JENIS_PENGADAAN_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="1"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="150"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF KEDUDUKAN_HUKUM_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="2"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="50"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF HARGA_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="3"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="50"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF KPKN_ID">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="60"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF UNOR">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA_UNOR">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="250"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA_JABATAN" nillable="true" minOccurs="0">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="250"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF LOKASI">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="LOKASI_ID" nillable="true" minOccurs="0">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="40"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="dosen_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="kode_dosen"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF PENDIDIKAN">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="32"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="TK_PENDIDIKAN_ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="2"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="100"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="TabrefPendidikan_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="ID"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="TABREF TK_PENDIDIKAN">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="ID">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="2"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="NAMA">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="30"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="GROUP_TK_PEND_NM" nillable="true" minOccurs="0">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:maxLength value="30"/>
+       <xs:minLength value="1"/>
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element ref="TABREF PENDIDIKAN" minOccurs="0" maxOccurs="unbounded"/>
+   </xs:sequence>
+  </xs:complexType>
+  <xs:key name="TabrefTkPendidikan_PrimaryKey_1">
+   <xs:selector xpath="."/>
+   <xs:field xpath="ID"/>
+  </xs:key>
+  <xs:keyref name="TabrefPendidikan_ForeignKey_1" refer="TabrefTkPendidikan_PrimaryKey_1">
+   <xs:selector xpath="TABREF PENDIDIKAN"/>
+   <xs:field xpath="ID"/>
+  </xs:keyref>
+ </xs:element>
+</xs:schema>
