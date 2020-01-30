@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Sim;
 use App\Database;
+use App\Simrole;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,8 @@ class SimController extends Controller
      */
     public function index()
     {
+        
+        Auth::user()->id_role;
         $sim = Sim::orderBy('created_at', 'desc')->paginate(5);
         return view('admin.modul-sim.sim-table',compact('sim'));
     }
@@ -37,6 +40,28 @@ class SimController extends Controller
     public function create()
     {
         return view('admin.modul-sim.sim-create');
+    }
+
+    public static function checkPriv($id_sim,$id_role)
+    {
+        if (Auth::user()->id_role == 1) {
+            //for admin
+            $simDatabase = Simrole::where([
+               
+                'id_sim' => $id_sim
+                
+            ])->first();
+            
+        } else {
+            $simDatabase = Simrole::where([
+               
+                'id_sim' => 2,
+                'id_role' => Auth::user()->id_role //3
+
+            ])->first();
+        }
+        // dd($dbDatabase->permission);
+        return $simDatabase;
     }
 
     /**
@@ -99,4 +124,6 @@ class SimController extends Controller
     {
         //
     }
+
+   
 }

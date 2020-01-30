@@ -34,7 +34,7 @@
                 <tbody>
               @foreach($role as $roles)
                   <tr>
-                    <td>{{$roles->name}}</td>
+                    <td><a href="{{route('permission.index',$roles->id)}}">{{$roles->name}}</a></td>
                     <td>
                         <a href=""><i class="fa fa-eye"></i></a>
                         <a href=""><i class="fa fa-pencil"></i></a>

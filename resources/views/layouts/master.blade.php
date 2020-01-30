@@ -96,7 +96,7 @@
           <!-- Control Sidebar Toggle Button -->
          
           <li>
-            <a href="{{route('login.create')}}">{{Auth::user()->id}}</a>
+            <a href="{{route('login.create')}}"></a>
           </li>
           <li>
             <a href="{{route('login.create')}}">Logout</a>

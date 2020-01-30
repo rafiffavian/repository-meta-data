@@ -40,7 +40,7 @@ class User extends Authenticatable
 
     public function myrole()
     {
-        return $this->belongsTo(Role::class, 'id_role');
+        return $this->belongsTo(Role::class, 'id');
     }
 
     public function userole()
@@ -56,5 +56,10 @@ class User extends Authenticatable
     public function dbuser()
     {
         return $this->hasMany(Database::class, 'id_user');
+    }
+
+    public function permission()
+    {
+        return $this->hasMany(Permission::class, 'id_user');
     }
 }

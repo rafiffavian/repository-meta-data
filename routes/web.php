@@ -50,6 +50,15 @@ Route::middleware(['auth'])->group(function(){
     Route::put('/dashboard/admin/table/download/store/{id}','Admin\DownloadController@store')->name('download.store');
     Route::get('/dashboard/admin/table/download/download/{id}','Admin\DownloadController@download')->name('download.file');
     Route::get('/dashboard/admin/table/download/back/{id}','Admin\DownloadController@back')->name('download.back');
+
+    Route::get('/dashboard/admin/role/permission/{id}','Admin\PermissionController@index')->name('permission.index');
+    Route::put('/dashboard/admin/role/permission/store/{id}','Admin\PermissionController@store')->name('permission.store');
+
+    Route::get('/dashboard/admin/role/permission/database/{id}/{id_role}','Admin\DbpermissionController@index')->name('dbpermission.index');
+    Route::put('/dashboard/admin/role/permission/database/store/{id}/{id_role}','Admin\DbpermissionController@store')->name('dbpermission.store');
+
+    Route::get('/dashboard/admin/role/permission/table/{sim_id}/{id}/{id_role}','Admin\TbpermissionController@index')->name('tbpermission.index');
+    Route::put('/dashboard/admin/role/permission/table/store/{sim_id}/{id}/{id_role}','Admin\TbpermissionController@store')->name('tbpermission.store');
     
 });   
 

@@ -1,3 +1,4 @@
+@php use \App\Http\Controllers\Admin\TableController ; @endphp
 @extends('layouts.master')
 
 @section('content')
@@ -13,6 +14,7 @@
         <div class="box-body">
           <div class="row">
             <div class="col-md-12">
+            {{$id_sim}}
                 <h3>Kelola Table Database {{$nama_database->name}}</h3>
                 <div class="box-header with-border">
                     
@@ -32,14 +34,25 @@
                 <div class="row mt-2">
                     <h3>
                     @foreach($table as $tables) 
+                       @if($tables)   
+                       @php 
+                       $checkPriv = '';
+                       $checkPriv = TableController::checkPriv($id_sim,$nama_database->id,$tables->id,Auth::user()->id_role); 
+                       //dd($checkPriv->permission == '1');
+                       @endphp
                         <ul>
                             <li style="margin:20px 0;">
+                             @if ($checkPriv->permission == '1' || Auth::user()->id_role == 1)
                                 <a href="{{route('table.show',$tables->id)}}">{{$tables->name}}</a><br>
+                             @else   
+                                <a href="">{{$tables->name}}</a><br>
+                             @endif   
                                 <!--small><a data-toggle="modal" href="#editMk1">Edit</a>&nbsp;<a href=""></a></small-->
                                 <small><a href="#">Edit</a>&nbsp;<a href=""></a></small>||
                                 <small><a href="{{route('download.index',$tables->id)}}">Upload File</a>&nbsp;<a href=""></a></small>
                             </li>
                         </ul>
+                       @endif  
                     @endforeach 
                     </h3>
                 </div>

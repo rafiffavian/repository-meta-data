@@ -1,3 +1,4 @@
+@php use \App\Http\Controllers\Admin\DatabaseController ; @endphp
 @extends('layouts.master')
 
 @section('content')
@@ -13,6 +14,7 @@
         <div class="box-body">
           <div class="row">
             <div class="col-md-12">
+                {{Auth::user()->id_role}}
                 <h3>Kelola Database {{$nama_database->name}}</h3>
                 <div class="box-header with-border">
                     
@@ -33,10 +35,19 @@
                     <h3>
 
                     @foreach($database as $databases) 
-                       @if($databases)     
+                       @if($databases)   
+                       @php 
+                       $checkPriv = '';
+                       $checkPriv = DatabaseController::checkPriv($nama_database->id,$databases->id,Auth::user()->id_role); 
+                       //dd($checkPriv->permission == '1');
+                       @endphp
                         <ul>
                             <li style="margin:20px 0;">
+                                @if ($checkPriv->permission == '1' || Auth::user()->id_role == 1)
                                 <a href="{{route('database.show',$databases->id)}}">{{$databases->name}}</a><br>
+                                @else
+                                <a href="">{{$databases->name}}</a><br>
+                                @endif
                                 <!--small><a data-toggle="modal" href="#editMk1">Edit</a>&nbsp;<a href=""></a></small-->
                                 <small><a href="/edit-matkul/sis-infor-akun">Edit</a>&nbsp;<a href=""></a></small>
                             </li>
